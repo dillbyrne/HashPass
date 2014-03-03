@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">HashPass</string>
+    <string name="input">Input</string>
+    <string name="output">Output</string>
+    <string name="gen">Generate</string>
+    <string name="type">Algorithm</string>
+    
+    <string name="md5">MD5</string>
+    <string name="sha1">SHA1</string>
+    <string name="sha256">SHA256</string>
+    <string name="sha512">SHA512</string>    
+    
+    
+        	<!-- String array for the hashing options-->
+	<string-array name="hashes">
+		<item name="md5" type="string">@string/md5</item>
+		<item name="sha1" type="string">@string/sha1</item>
+		<item name="sha256" type="string">@string/sha256</item>
+		<item name="sha512" type="string">@string/sha512</item>
+	</string-array>
+    
+</resources>
