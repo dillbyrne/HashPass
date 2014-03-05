@@ -121,7 +121,7 @@ public class HashPassActivity extends Activity implements OnClickListener , OnIt
      * @return String hash : The resulting hash
      * */
 	
-    public String createHash(String input, String type){
+    private String createHash(String input, String type){
     	
     	
     	byte[] bytesOfMessage;
