@@ -22,7 +22,7 @@ For your banking or email you could use the SHA512 hash of your chosen password 
 The hashes are automatically copied to the clipboard for convenience. This allows you to paste it into an app easily.
 
 If a database is compromised which is insecurely storing the passwords and your passwords (your generated hash) was obtained . 
-The other three sites (with differen hashing algorithms) would be safe.
+The other three sites (with different hashing algorithms) would be safe.
 
 Using hashes as passwords also makes an attack more computationally expensive as each string has to be hashed first before submitting it as the password.
 
