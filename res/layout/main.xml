@@ -25,14 +25,29 @@
 	        android:inputType="textPassword"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
-	            
-	            
-		<Spinner 
-			android:id="@+id/hash_type" 
-			android:layout_width="fill_parent" 
-			android:layout_height="wrap_content"
-			android:prompt="@string/type"
-			android:entries="@array/hashes"/>
+
+		
+		
+		<LinearLayout
+				android:id="@+id/Linear2"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent" >
+				
+				<TextView
+					android:id="@+id/hashTypeText"
+					android:layout_width="0dp"
+					android:layout_marginLeft="10dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="@string/hashTypeTxt">
+				</TextView>
+				
+				<Spinner 
+					android:id="@+id/hash_type" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:entries="@array/hashes"/>
+		</LinearLayout>	            
 		
 	    <EditText
 	        android:hint="@string/output"
@@ -40,7 +55,28 @@
 	        android:id="@+id/output"
 	        android:layout_width="fill_parent"
             android:layout_height="wrap_content"/>
-	
+	    	    
+	    	<LinearLayout
+				android:id="@+id/Linear3"
+				android:layout_height="wrap_content"
+				android:layout_width="fill_parent" >
+				
+				<TextView
+					android:id="@+id/clearClipboard"
+					android:layout_width="0dp"
+					android:layout_marginLeft="10dp"
+					android:layout_height="wrap_content"
+					android:layout_weight="1"
+					android:text="@string/clearCbTxt">
+				</TextView>
+				
+	    		<Spinner 
+					android:id="@+id/timer" 
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:entries="@array/times"/>
+		</LinearLayout>
+
 		<Button
 			android:id="@+id/gen"
 			android:text="@string/gen"

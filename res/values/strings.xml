@@ -4,20 +4,45 @@
     <string name="input">Input</string>
     <string name="output">Output</string>
     <string name="gen">Generate</string>
-    <string name="type">Algorithm</string>
+    <string name="hashTypeTxt">Hash type</string>
     
     <string name="md5">MD5</string>
     <string name="sha1">SHA1</string>
     <string name="sha256">SHA256</string>
     <string name="sha512">SHA512</string>    
     
+    <string name="none">No timer</string>
+    <string name ="fifteen_sec">15 seconds</string>
+    <string name="thirty_sec">30 seconds</string>
+    <string name="one_min">1 minute</string>
+    <string name="two_min">2 minutes</string>
+    <string name="three_min">3 minutes</string>
+    <string name="five_min">5 minutes</string>
+    <string name="ten_min">10 minutes</string>
+
+    <string name="clearCbTxt">Clipboard timeout</string>
+    
+            
+    
     
         	<!-- String array for the hashing options-->
 	<string-array name="hashes">
-		<item name="md5" type="string">@string/md5</item>
-		<item name="sha1" type="string">@string/sha1</item>
-		<item name="sha256" type="string">@string/sha256</item>
-		<item name="sha512" type="string">@string/sha512</item>
+		<item name="MD5" type="string">@string/md5</item>
+		<item name="SHA1" type="string">@string/sha1</item>
+		<item name="SHA256" type="string">@string/sha256</item>
+		<item name="SHA512" type="string">@string/sha512</item>
+	</string-array>
+	
+	        	<!-- String array for the timer options-->
+	<string-array name="times">
+		<item name="NONE" type="string">@string/none</item>
+		<item name="15000" type="string">@string/fifteen_sec</item>
+		<item name="30000" type="string">@string/thirty_sec</item>
+		<item name="60000" type="string">@string/one_min</item>
+		<item name="120000" type="string">@string/two_min</item>
+		<item name="180000" type="string">@string/three_min</item>
+		<item name="300000" type="string">@string/five_min</item>
+		<item name="600000" type="string">@string/ten_min</item>
 	</string-array>
     
 </resources>

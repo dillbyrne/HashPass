@@ -5,6 +5,9 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.ClipboardManager;
 import android.view.View;
@@ -17,14 +20,19 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 public class HashPassActivity extends Activity implements OnClickListener , OnItemSelectedListener{
-   
+   	
 	//declare ui components and strings
 	private EditText input;
 	private EditText output;
 	private Button  generate;
 	private Spinner hash_type;
+	private Spinner timer;
 	private String hash_choice;
 	private String output_str;
+	private int timeout = 0;
+	
+    //shared preferences
+    SharedPreferences settings;
 	
 	
 	
@@ -40,11 +48,20 @@ public class HashPassActivity extends Activity implements OnClickListener , OnIt
         output = (EditText) findViewById(R.id.output);
         generate = (Button) findViewById(R.id.gen);
         hash_type = (Spinner) findViewById(R.id.hash_type);
+        timer = (Spinner) findViewById(R.id.timer);
         
         //set listeners
         generate.setOnClickListener(this);
+        timer.setOnItemSelectedListener(this);
         hash_type.setOnItemSelectedListener(this);
-                
+        
+        
+        
+        // Restore shared preferences        
+        settings = getSharedPreferences("HashPassPrefs", Context.MODE_PRIVATE); 
+    	
+        timer.setSelection(settings.getInt("tIndex",0));
+        hash_type.setSelection(settings.getInt("hIndex", 0));
     }
     
 	@Override
@@ -52,7 +69,7 @@ public class HashPassActivity extends Activity implements OnClickListener , OnIt
 				
 		// if there is text entered
 		if (v == generate && input.getText().toString().length() !=0 ){
-			 
+			
 			ClipboardManager clipboard = 
 				      (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 
 
@@ -65,6 +82,13 @@ public class HashPassActivity extends Activity implements OnClickListener , OnIt
 				output.setText(output_str);
 				clipboard.setText(output_str);
 				Toast.makeText(this, "hash copied to clipboard", Toast.LENGTH_SHORT).show();
+				
+				if(timeout != 0){
+					
+					//set clipboard to clear on timer
+					PostHash posthash = new PostHash();
+					posthash.execute(timeout);
+				}
 			}
 		}
 		else{
@@ -79,27 +103,57 @@ public class HashPassActivity extends Activity implements OnClickListener , OnIt
 	public void onItemSelected(AdapterView<?> arg0, View v, int position,
 			long id) {
 		
+		//save settings  
+		SharedPreferences.Editor editor = settings.edit();
 		
-		//md5
-		if(position == 0)
-			hash_choice = getResources().getString(R.string.md5);
-
-		//sha1
-		if(position == 1)			
-			hash_choice = getResources().getString(R.string.sha1);
-
-		//sha256
-		if(position == 2)
-			hash_choice = getResources().getString(R.string.sha256);
-		
-		//sha512
-		if(position == 3)
-			hash_choice = getResources().getString(R.string.sha512);
-
+		if( arg0 == hash_type){
 			
-		//clear the output box
-		output.setText("");
+			//md5
+			if(position == 0)
+				hash_choice = getResources().getString(R.string.md5);
+	
+			//sha1
+			else if(position == 1)			
+				hash_choice = getResources().getString(R.string.sha1);
+	
+			//sha256
+			else if(position == 2)
+				hash_choice = getResources().getString(R.string.sha256);
+			
+			//sha512
+			else if(position == 3)
+				hash_choice = getResources().getString(R.string.sha512);
+	
+			
+				
+			//clear the output box
+			output.setText("");
+			
+			 editor.putInt("hIndex", position);
+			 editor.commit();
 		
+		}else if (arg0 == timer){
+			
+			if(position == 0) 
+				timeout = 0; //no timeout
+			else if(position == 1)
+				timeout = 15000; //15 seconds
+			else if(position == 2)
+				timeout = 30000; //30 seconds
+			else if(position == 3)
+				timeout = 60000; //1 minute
+			else if(position == 4)
+				timeout = 120000; //2 minutes
+			else if(position == 5)
+				timeout = 180000; //3 minutes
+			else if(position == 6)
+				timeout = 300000; //5 minutes
+			else if(position == 7) 
+				timeout = 600000; //10 minutes
+			
+			editor.putInt("tIndex", position);
+			editor.commit();
+		}
 	}
 
 	
@@ -158,8 +212,45 @@ public class HashPassActivity extends Activity implements OnClickListener , OnIt
 		}
 
     	// returns null if it was unable to perform the hashing
-		return "NULL";
+		return null;
     	
     }
+    
+    private class PostHash extends AsyncTask<Integer,Void,String>{
+
+		@Override
+		protected String doInBackground(Integer... params) {
+			
+			//clear the clipboard after the specified interval
+			try{   
+				Thread.sleep(params[0]);
+				ClipboardManager clipboard = 
+					      (ClipboardManager) getSystemService(CLIPBOARD_SERVICE); 
+				clipboard.setText("");
+				return "success";
+				
+			}catch(InterruptedException e) {
+				e.printStackTrace();
+			}
+			
+			
+			return "failure";
+			
+		}
+		
+		protected void onPostExecute(String status){
+			
+			if (status == "success"){
+				Toast.makeText(HashPassActivity.this, "Clipboard has been cleared", Toast.LENGTH_SHORT).show();
+				input.setText("");
+				output.setText("");
+			}else{
+				Toast.makeText(HashPassActivity.this, "Unable to clear clipboard", Toast.LENGTH_SHORT).show();
+			}
+			
+		}
+    	
+    }
+    
 }
 

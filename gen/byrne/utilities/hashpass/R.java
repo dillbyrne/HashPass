@@ -12,6 +12,9 @@ public final class R {
         /**  String array for the hashing options
          */
         public static final int hashes=0x7f050000;
+        /**  String array for the timer options
+         */
+        public static final int times=0x7f050001;
     }
     public static final class attr {
     }
@@ -19,25 +22,39 @@ public final class R {
         public static final int icon=0x7f020000;
     }
     public static final class id {
-        public static final int gen=0x7f060005;
-        public static final int hash_type=0x7f060003;
+        public static final int Linear2=0x7f060003;
+        public static final int Linear3=0x7f060007;
+        public static final int clearClipboard=0x7f060008;
+        public static final int gen=0x7f06000a;
+        public static final int hashTypeText=0x7f060004;
+        public static final int hash_type=0x7f060005;
         public static final int input=0x7f060002;
         public static final int linear=0x7f060001;
-        public static final int output=0x7f060004;
+        public static final int output=0x7f060006;
         public static final int scrollView=0x7f060000;
+        public static final int timer=0x7f060009;
     }
     public static final class layout {
         public static final int main=0x7f030000;
     }
     public static final class string {
         public static final int app_name=0x7f040000;
+        public static final int clearCbTxt=0x7f040011;
+        public static final int fifteen_sec=0x7f04000a;
+        public static final int five_min=0x7f04000f;
         public static final int gen=0x7f040003;
+        public static final int hashTypeTxt=0x7f040004;
         public static final int input=0x7f040001;
         public static final int md5=0x7f040005;
+        public static final int none=0x7f040009;
+        public static final int one_min=0x7f04000c;
         public static final int output=0x7f040002;
         public static final int sha1=0x7f040006;
         public static final int sha256=0x7f040007;
         public static final int sha512=0x7f040008;
-        public static final int type=0x7f040004;
+        public static final int ten_min=0x7f040010;
+        public static final int thirty_sec=0x7f04000b;
+        public static final int three_min=0x7f04000e;
+        public static final int two_min=0x7f04000d;
     }
 }
