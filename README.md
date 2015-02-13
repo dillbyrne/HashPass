@@ -32,4 +32,4 @@ Using hashes as passwords also makes an attack more computationally expensive as
 I have removed the ads and made some small changes to the UI but for now it is the same version as is in the play store.
 https://play.google.com/store/apps/details?id=byrne.utilities.hashpass 
 
-The app is available on F-DROID
+The app is available on the F-DROID repository which will always have the most up to date version
