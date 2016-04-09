@@ -1,35 +1,45 @@
 HashPass
 ========
 
-Hash Pass allows a user to input a password or any text and generate a hash from it. 
+A simple andorid application to address the recall verses recognition problem with passwords. Since hashing algorithms have deterministic outputs we can take advantage of this and use it for generating secure alphanumeric passwords from an input that is easy to remember and familiar to the user.
 
-Generally a secure password is hard to remember so users tend to opt for easy to remember passwords. These passwords are also easy to crack. 
-This app aims to address that by allowing the user to use hashes in place of their passwords on various sites.
+Example: a user may have a password such as `computer` (a bad one) that would be easily cracked in a dictionary attack.
 
-Example: a user may have a password such as "computer" (a bad one) that would be easily cracked in a dictionary attack.
+Where as the md5 hash generated from computer is `df53ca268240ca76670c8566ee54568a` which is not easy to guess or dictionary attack. The input "computer" is also easy for the user to remember and will always produce the same output.
 
-Where as the md5 hash generated from computer is
-df53ca268240ca76670c8566ee54568a which is not easy to guess or dictionary attack.
+Many non technical users use the same password for different sites (not recommended). In this case they can at least choose a different hash and have up to four levels of security for each input.
 
-There are currently four algorithms available in the app. MD5 , SHA1 , SHA256 & SHA512.
+For your banking or email you could use the SHA512 hash of your chosen password . Continuing with the `computer` example above the hash is
 
-This allows the user to use the same password for four different sites and a different hash for each.
-
-For your banking or email you could use the SHA512 hash of your chosen password . In the computer example the hash is
-
-922d076069b1df893fc010b7a6d2aa55c7c4c5d194f163394a4c864de5754131c17bfa94ac1667f56b5181cc7eca5dc3a09444caee6eecf16114926bb29f7e79
-
-The hashes are automatically copied to the clipboard for convenience. This allows you to paste it into an app easily.
-
-If a database is compromised which is insecurely storing the passwords and your passwords (your generated hash) was obtained . 
-The other three sites (with different hashing algorithms) would be safe.
-
-Using hashes as passwords also makes an attack more computationally expensive as each string has to be hashed first before submitting it as the password.
+`922d076069b1df893fc010b7a6d2aa55c7c4c5d194f163394a4c864de5754131c17bfa94ac1667f56b5181cc7eca5dc3a09444caee6eecf16114926bb29f7e79`
 
 
+## Features
 
-# Whats next ?
-I have removed the ads and made some small changes to the UI but for now it is the same version as is in the play store.
+* Four available algorithms
+  * MD5
+  * SHA1
+  * SHA256
+  * SHA512
+* Hashes are automatically copied to clipboard for convienience 
+* Clipboard is cleared after a user chosen interval
+
+## Screenshots
+
+![screenshot_2016-04-07-22-37-39](https://cloud.githubusercontent.com/assets/2903711/14405595/3baccf64-fe8a-11e5-9269-4a52c0a7cf65.png)
+![screenshot_2016-04-07-22-38-01](https://cloud.githubusercontent.com/assets/2903711/14405593/3baaa1ee-fe8a-11e5-90b7-d162c3cfd686.png)
+
+
+
+## Links
+
+I have removed the ads and made some small changes to the UI to make use of the holo theme in kitkat but functionally it is the same version as is in the play store. The F-Droid version will always be the most up to date
+
+https://f-droid.org/repository/browse/?fdfilter=bodha&fdid=byrne.utilities.hashpass
+
 https://play.google.com/store/apps/details?id=byrne.utilities.hashpass 
 
-The app is available on the F-DROID repository which will always have the most up to date version
+## Firefox addon 
+
+https://addons.mozilla.org/en-US/firefox/addon/hashpass-firefox/
+
