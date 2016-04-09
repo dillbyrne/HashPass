@@ -1,7 +1,7 @@
 HashPass
 ========
 
-A simple andorid application to address the recall verses recognition problem with passwords. Since hashing algorithms have deterministic outputs we can take advantage of this and use it for generating secure alphanumeric passwords from an input that is easy to remember and familiar to the user.
+A simple andorid application to address the security vs usability problem with passwords. Since hashing algorithms have deterministic outputs we can take advantage of this and use it for generating secure alphanumeric passwords from an input that is easy to remember and familiar to the user.
 
 Example: a user may have a password such as `computer` (a bad one) that would be easily cracked in a dictionary attack.
 
